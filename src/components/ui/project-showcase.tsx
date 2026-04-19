@@ -3,12 +3,13 @@
 import type React from "react";
 import { useState, useRef, useEffect } from "react";
 import { ArrowUpRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export interface Project {
+  slug: string;
   title: string;
   description: string;
   year: string;
-  link: string;
   image: string;
 }
 
@@ -78,11 +79,11 @@ export function ProjectShowcase({ projects }: ProjectShowcaseProps) {
       <div
         className="pointer-events-none fixed top-0 left-0 z-50 hidden md:block transition-opacity duration-300"
         style={{
-          opacity: isVisible ? 1 : 0,
+          opacity: isVisible && activeProject?.image ? 1 : 0,
           transform: `translate(${smoothPosition.x + (containerRef.current?.getBoundingClientRect().left ?? 0) + 24}px, ${smoothPosition.y + (containerRef.current?.getBoundingClientRect().top ?? 0) - 80}px)`,
         }}
       >
-        {activeProject && (
+        {activeProject?.image && (
           <img
             src={activeProject.image}
             alt={activeProject.title}
@@ -94,13 +95,13 @@ export function ProjectShowcase({ projects }: ProjectShowcaseProps) {
       <ul className="border-t border-border">
         {projects.map((project, index) => (
           <li
-            key={project.title}
+            key={project.slug}
             onMouseEnter={() => handleMouseEnter(index)}
             onMouseLeave={handleMouseLeave}
             className="group relative border-b border-border"
           >
-            <a
-              href={project.link}
+            <Link
+              to={`/projects/${project.slug}`}
               className="flex items-center justify-between py-6 md:py-8 px-2 md:px-4 transition-colors"
             >
               <div className="flex-1 min-w-0">
@@ -113,14 +114,18 @@ export function ProjectShowcase({ projects }: ProjectShowcaseProps) {
                   </h3>
                   <ArrowUpRight className="w-5 h-5 text-muted-foreground opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
                 </div>
-                <p className="mt-2 text-sm md:text-base text-muted-foreground max-w-md">
-                  {project.description}
-                </p>
+                {project.description && (
+                  <p className="mt-2 text-sm md:text-base text-muted-foreground max-w-md">
+                    {project.description}
+                  </p>
+                )}
               </div>
-              <span className="ml-4 text-xs md:text-sm text-muted-foreground tabular-nums">
-                {project.year}
-              </span>
-            </a>
+              {project.year && (
+                <span className="ml-4 text-xs md:text-sm text-muted-foreground tabular-nums">
+                  {project.year}
+                </span>
+              )}
+            </Link>
           </li>
         ))}
       </ul>
