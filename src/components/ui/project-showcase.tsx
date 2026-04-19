@@ -71,7 +71,7 @@ export function ProjectShowcase({ projects }: ProjectShowcaseProps) {
       onMouseMove={handleMouseMove}
       className="w-full max-w-3xl mx-auto px-4 py-16 md:py-24 relative"
     >
-      <h2 className="text-sm uppercase tracking-widest text-muted-foreground mb-10">
+      <h2 className="text-sm uppercase tracking-widest mb-10 text-primary-foreground">
         Selected Work
       </h2>
 
