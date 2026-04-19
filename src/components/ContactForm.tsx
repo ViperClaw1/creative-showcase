@@ -68,7 +68,7 @@ export const ContactForm = () => {
   };
 
   return (
-    <section id="contact" className="w-full px-4 py-16 md:py-24 bg-primary-foreground">
+    <section id="contact" className="w-full px-4 py-16 md:py-24 bg-inherit">
       <div className="max-w-xl mx-auto">
         <h2 className="text-sm uppercase tracking-widest text-muted-foreground mb-3">
           Get in touch
