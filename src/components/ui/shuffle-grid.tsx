@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 export const ShuffleHero = () => {
   return (
     <section className="w-full px-4 md:px-8 py-12 md:py-24 grid grid-cols-1 md:grid-cols-2 items-center gap-8 max-w-6xl mx-auto">
-      <div>
+      <div className="mr-[30px]">
         <span className="block mb-4 text-xs md:text-sm text-primary font-medium tracking-wide uppercase">
           Crafted with care
         </span>
