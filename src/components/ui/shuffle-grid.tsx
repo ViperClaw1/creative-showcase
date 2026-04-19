@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 export const ShuffleHero = () => {
   return (
     <section className="w-full px-4 md:px-8 py-12 md:py-24 grid grid-cols-1 md:grid-cols-2 items-center gap-8 max-w-6xl mx-auto">
-      <div className="mr-[30px]">
+      <div>
         <span className="block mb-4 text-xs md:text-sm text-primary font-medium tracking-wide uppercase">
           Crafted with care
         </span>
@@ -15,8 +15,8 @@ export const ShuffleHero = () => {
           A portfolio of work I'm proud of
         </h1>
         <p className="text-base md:text-lg text-muted-foreground my-4 md:my-6 max-w-prose">
-          Explore selected projects, leave your thoughts, and reach out if you'd
-          like to collaborate. Built to evolve — more is on the way.
+          Explore selected projects, leave your thoughts, and reach out if you'd like to collaborate. Built to evolve —
+          more is on the way.
         </p>
         <Button size="lg" asChild>
           <a href="#projects">View projects</a>
@@ -34,10 +34,7 @@ const shuffle = (array: typeof squareData) => {
   while (currentIndex !== 0) {
     randomIndex = Math.floor(Math.random() * currentIndex);
     currentIndex--;
-    [array[currentIndex], array[randomIndex]] = [
-      array[randomIndex],
-      array[currentIndex],
-    ];
+    [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
   }
   return array;
 };
@@ -66,7 +63,7 @@ const generateSquares = () =>
     <motion.div
       key={sq.id}
       layout
-      transition={{ duration: 1.5, type: "spring" }}
+      transition={{ duration: 3.5, type: "spring" }}
       className="w-full h-full"
       style={{
         backgroundImage: `url(${sq.src})`,
