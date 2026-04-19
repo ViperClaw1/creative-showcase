@@ -63,7 +63,7 @@ const generateSquares = () =>
     <motion.div
       key={sq.id}
       layout
-      transition={{ duration: 4.5, type: "ease-in-out" }}
+      transition={{ duration: 4.5, type: "tween" }}
       className="w-full h-full"
       style={{
         backgroundImage: `url(${sq.src})`,
