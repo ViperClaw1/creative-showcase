@@ -80,7 +80,7 @@ const ShuffleGrid = () => {
   useEffect(() => {
     const shuffleSquares = () => {
       setSquares(generateSquares());
-      timeoutRef.current = setTimeout(shuffleSquares, 3000);
+      timeoutRef.current = setTimeout(shuffleSquares, 5000);
     };
     shuffleSquares();
     return () => {
