@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 const contactSchema = z.object({
   name: z
@@ -56,9 +57,21 @@ export const ContactForm = () => {
     }
 
     setSubmitting(true);
-    // Placeholder — wire up to backend in later phase.
-    await new Promise((r) => setTimeout(r, 600));
+    const { error } = await supabase.from("contact_messages").insert({
+      name: result.data.name,
+      email: result.data.email,
+      message: result.data.message,
+    });
     setSubmitting(false);
+
+    if (error) {
+      toast({
+        title: "Could not send message",
+        description: error.message,
+        variant: "destructive",
+      });
+      return;
+    }
 
     toast({
       title: "Message sent",
